@@ -1,0 +1,15 @@
+{
+    "name": "techalin/micro-framework",
+    "description": "This is a simple php framework using mvc design pattern.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Alban Afmeti",
+            "email": "albanafmeti@gmail.com"
+        }
+    ],
+    "require": {
+        "philo/laravel-blade": "3.*",
+        "illuminate/database": "^5.3"
+    }
+}
