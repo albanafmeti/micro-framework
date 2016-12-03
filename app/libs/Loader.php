@@ -3,6 +3,7 @@ namespace App\Libs;
 
 use ReflectionMethod;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Philo\Blade\Blade;
 
 class Loader
 {
@@ -14,7 +15,7 @@ class Loader
                     $classMethod = new ReflectionMethod($obj, $action);
 
                     if (count($classMethod->getParameters()) && $classMethod->getParameters()[0]->getClass()->name == "App\\Libs\\Request") {
-                        array_unshift($params, Request::get());
+                        array_unshift($params, Request::createFromGlobals());
                     }
 
                     if (count($params) <= $classMethod->getNumberOfParameters() && count($params) >= $classMethod->getNumberOfRequiredParameters()) {
@@ -23,12 +24,11 @@ class Loader
                         throw new \Exception("Error: Number of parameters is not valid!");
                     }
 
-
                 } else {
 
                     $classMethod = new ReflectionMethod($obj, $action);
                     if (count($classMethod->getParameters()) && $classMethod->getParameters()[0]->getClass()->name == "App\\Libs\\Request") {
-                        array_unshift($params, Request::get());
+                        array_unshift($params, Request::createFromGlobals());
                         call_user_func_array(array($obj, $action), $params);
                     } else {
                         call_user_func(array($obj, $action));
@@ -41,7 +41,7 @@ class Loader
         }
     }
 
-    public function configureORM()
+    public static function configureORM()
     {
 
         /**

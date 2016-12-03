@@ -37,7 +37,7 @@ class Session
     }
 
     /**
-     * Effettua unset della sessione $key
+     * Unset of the session $key
      * @param string $key
      */
     public static function clear($key)

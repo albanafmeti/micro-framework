@@ -1,7 +1,11 @@
 <?php
 use App\Libs\Request;
-use App\Libs\Middleware;
+use App\Libs\Filter;
 
-Middleware::add("auth", function (Request $request) {
-    return true;
+Filter::add("auth", function (Request $request) {
+    $authenticated = true;
+
+    if (!$authenticated) {
+        redirect("/login");
+    }
 });

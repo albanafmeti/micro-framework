@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8acee1cc51b946fbb398a407995afeae",
-    "content-hash": "3880317bb37ae0c928d17b40b730123b",
+    "hash": "14bb854165ed0a31a88b14fbd13c5854",
+    "content-hash": "5292a25e98c6b06aae9c5edcf19124a1",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -707,6 +707,59 @@
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
             "time": "2016-11-03 08:04:31"
+        },
+        {
+            "name": "symfony/http-foundation",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-foundation.git",
+                "reference": "9963bc29d7f4398b137dd8efc480efe54fdbe5f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/9963bc29d7f4398b137dd8efc480efe54fdbe5f1",
+                "reference": "9963bc29d7f4398b137dd8efc480efe54fdbe5f1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/polyfill-mbstring": "~1.1"
+            },
+            "require-dev": {
+                "symfony/expression-language": "~2.8|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\HttpFoundation\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony HttpFoundation Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-11-27 04:21:38"
         },
         {
             "name": "symfony/polyfill-mbstring",

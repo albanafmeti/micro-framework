@@ -13,8 +13,7 @@ class Data
     {
 
         if (get_class($entity) == "App\\Libs\\Request") {
-
-            foreach ($entity->all() as $key => $value) {
+            foreach ($entity->request->all() as $key => $value) {
                 Session::setArray(["saved_data", $key], $value);
             }
 

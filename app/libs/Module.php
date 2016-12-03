@@ -30,7 +30,7 @@ class Module
 
     public static function output($position)
     {
-        $modules = Request::route()->modules;
+        $modules = Request::getRoute()->modules;
 
         if (isset($modules[$position])) {
             echo $modules[$position]->getContent();

@@ -2,25 +2,19 @@
 
 namespace App\Libs;
 
-class Request
-{
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
-    private static $url;
+class Request extends SymfonyRequest
+{
     private static $controller;
     private static $action;
     private static $parameters;
     private static $lang;
     private static $route;
-    private static $input = [];
 
-    public static function create()
+    public static function getPath()
     {
-        self::$input = $_REQUEST;
-    }
-
-    public static function getUrl()
-    {
-        return self::$url;
+        return self::createFromGlobals()->getPathInfo();
     }
 
     public static function getController()
@@ -38,14 +32,9 @@ class Request
         return self::$parameters;
     }
 
-    static function getLang()
+    public static function getLang()
     {
         return self::$lang;
-    }
-
-    public static function setUrl($url)
-    {
-        self::$url = $url;
     }
 
     public static function setController($controller)
@@ -73,7 +62,7 @@ class Request
         self::$route = $route;
     }
 
-    public static function route()
+    public static function getRoute()
     {
         return self::$route;
     }
@@ -83,54 +72,29 @@ class Request
         if (isset($_REQUEST[$key])) {
             unset($_REQUEST[$key]);
         }
-        if (isset(self::$input[$key])) {
-            unset(self::$input[$key]);
-        }
     }
 
-    public static function get()
+    public static function input($key)
     {
-        return new Request();
-    }
-
-    public function input($key)
-    {
-        if (isset($_REQUEST[$key])) {
-            return $_REQUEST[$key];
-        }
-        return null;
-    }
-
-    public static function in($key)
-    {
-        if (isset($_REQUEST[$key])) {
-            return $_REQUEST[$key];
-        }
-        return null;
+        return self::createFromGlobals()->get($key);
     }
 
     public function has($key)
     {
-        if (isset($_REQUEST[$key])) {
+        if (!is_null(Request::createFromGlobals()->get($key, null))) {
             return true;
         }
         return false;
     }
 
-    public function is($pattern)
+    public static function is($pattern)
     {
-
         $pattern = ltrim($pattern, "/");
-        if (substr($pattern, -1) == "%" && substr(self::$url, 0, strlen($pattern)) === $pattern) {
+        if (substr($pattern, -1) == "%" && substr(rtrim(self::getPath(), "/"), 0, strlen($pattern)) === $pattern) {
             return true;
-        } elseif ($pattern == self::$url) {
+        } elseif ($pattern == ltrim(self::getPath(), "/")) {
             return true;
         }
         return false;
-    }
-
-    public function all()
-    {
-        return self::$input;
     }
 }

@@ -1,0 +1,1 @@
+<p style="font-size: 20px; text-align: center;"><?php echo e($message); ?></p>

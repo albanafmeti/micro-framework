@@ -1,8 +1,6 @@
-@extends("layouts.main")
+<?php $__env->startSection("title", "Contact"); ?>
 
-@section("title", "Contact")
-
-@section("content")
+<?php $__env->startSection("content"); ?>
 
 
     <!-- *****************************************************************************************************************
@@ -21,7 +19,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                {{ flash_show() }}
+                <?php echo e(flash_show()); ?>
+
             </div>
         </div>
     </div>
@@ -38,26 +37,27 @@
                 <div class="hline"></div>
                 <p>Drop us a line or just say Hello!</p>
 
-                <form role="form" method="post" action="{{ route('contact') }}">
+                <form role="form" method="post" action="<?php echo e(route('contact')); ?>">
                     <div class="form-group">
                         <label for="InputName1">Your Name</label>
-                        <input type="text" name="name" class="form-control" value="{{ data_valueOf("name") }}">
+                        <input type="text" name="name" class="form-control" value="<?php echo e(data_valueOf("name")); ?>">
                     </div>
                     <div class="form-group">
                         <label for="InputEmail1">Email address</label>
                         <input type="text" name="email" class="form-control" id="exampleInputEmail1"
-                               value="{{ data_valueOf("email") }}">
+                               value="<?php echo e(data_valueOf("email")); ?>">
                     </div>
                     <div class="form-group">
                         <label for="InputSubject1">Subject</label>
-                        <input type="text" name="subject" class="form-control" value="{{ data_valueOf("subject") }}">
+                        <input type="text" name="subject" class="form-control" value="<?php echo e(data_valueOf("subject")); ?>">
                     </div>
                     <div class="form-group">
                         <label for="message1">Message</label>
-                        <textarea class="form-control" name="message" id="message1" rows="3">{{ data_valueOf("message") }}</textarea>
+                        <textarea class="form-control" name="message" id="message1" rows="3"><?php echo e(data_valueOf("message")); ?></textarea>
                     </div>
                     <button type="submit" name="send" class="btn btn-theme">Send</button>
-                    {!! data_clear() !!}
+                    <?php echo data_clear(); ?>
+
                 </form>
             </div>
             <!--/col-lg-8 -->
@@ -82,4 +82,5 @@
         <!--/row -->
     </div><!--/container -->
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("layouts.main", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

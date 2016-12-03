@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Modules;
+
 use App\Libs\ModuleInterface;
 use App\Libs\Module;
 use App\Libs\Request;

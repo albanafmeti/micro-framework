@@ -1,13 +1,13 @@
 <?php
 
-require "../config/definitions.php";
-if (SHOW_ERRORS) ini_set("display_errors", "1");
+define('DS', DIRECTORY_SEPARATOR);
+define('DOCROOT', dirname(dirname(__FILE__)) . DS);
 
-include DOCROOT . BOOTSTRAP_PATH . "autoload.php";
-include DOCROOT . BOOTSTRAP_PATH . "FrontController.php";
+require DOCROOT . 'config' . DS . 'definitions.php';
+setReporting();
 
-$loader = new \App\Libs\Loader();
-$loader->configureORM();
+require DOCROOT . 'vendor' . DS . 'autoload.php';
+require DOCROOT . BOOTSTRAP_PATH . "FrontController.php";
 
 $app = new Bootstrap\FrontController();
 $app->bootstrap();

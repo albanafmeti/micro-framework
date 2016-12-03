@@ -1,16 +1,19 @@
 <?php
 
-
-function route($path, Array $params = null)
+function config($key)
 {
-    $prm = "";
-    if (!is_null($params)) {
-        foreach ($params as $param) {
-            $prm .= "/" . $param;
-        }
+    switch ($key) {
+        case "db" :
+            return include DOCROOT . CONFIG_PATH . "database.php";
+            break;
     }
+}
 
-    return 'http://' . $_SERVER['HTTP_HOST'] . '/' . ltrim($path, "/") . $prm;
+function route($path, Array $params = [])
+{
+    $request = \App\Libs\Request::createFromGlobals();
+    $params = implode("/", $params);
+    return 'http://' . $request->server->get('HTTP_HOST') . '/' . trim($path, "/") . (($params != '') ? "/$params" : "");
 }
 
 function module($position)
@@ -20,7 +23,14 @@ function module($position)
 
 function script($script)
 {
-    echo "<script src='$script.js'></script>";
+    $script = rtrim($script, ".js");
+    echo "<script src='$script.js' type='text/javascript'></script>";
+}
+
+function stylesheet($style)
+{
+    $style = rtrim($style, ".css");
+    echo "<link rel='stylesheet' type='text/css' href='$style.css'>";
 }
 
 function route_is($req)
@@ -30,14 +40,12 @@ function route_is($req)
 
 function redirect($url)
 {
-
     if (substr($url, 0, 4) == "http") {
         header("Location: $url");
     } else {
         header("Location: " . route($url));
     }
-
-    exit();
+    exit;
 }
 
 function flash_show()

@@ -50,6 +50,7 @@ class Validation
                 Flash::addDanger($error);
                 break;
             }
+
             Data::create()->model($this->request);
             redirect($route);
         }
