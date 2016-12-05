@@ -76,3 +76,5 @@ The directory structure of our project is going to be like this:
 * In the _views_ directory are going to stay all blade view files and layouts
 * _cache_ is the directory where will be compiled files from Blade templating engine which we are going to talk later for. The _logs_ folder may contain different log files.
 * The last directory _vendor_ doesn't have to do with us, because it's necessary for downloaded packages and libraries via [_Composer_](https://getcomposer.org/).
+
+Continues...
