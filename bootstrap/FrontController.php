@@ -125,9 +125,6 @@ class FrontController
 
     private static function URItoArray($req = "")
     {
-        if ($req == "") {
-            $req = "/";
-        }
         $req = rtrim($req, '/');
         $req = urldecode($req);
         $req = explode('/', $req);

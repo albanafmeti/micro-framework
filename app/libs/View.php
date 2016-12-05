@@ -78,7 +78,7 @@ class View
         return (isset($this->terms[$term])) ? $this->terms[$term] : null;
     }
 
-    protected function replaceVars($string)
+    protected function replaceTerms($string)
     {
         if (count($this->terms)) {
             //Replace the Placeholders : [$Marcer]
@@ -102,7 +102,7 @@ class View
     public function render($view = null, $vars = [], $returnOutput = false)
     {
         if (is_null($this->view) && (is_null($view) || empty($view))) {
-            return "";
+            throw new \Exception("View $view not found");
         } elseif (!is_null($this->view) && (is_null($view) || empty($view))) {
             $view = $this->view;
         }
@@ -111,10 +111,10 @@ class View
         $content = $this->blade->view()->make($view, $mergedVars)->render();
 
         if ($returnOutput) {
-            return $this->replaceVars($content);
+            return $this->replaceTerms($content);
         }
 
-        echo $this->replaceVars($content);
+        echo $this->replaceTerms($content);
     }
 
     public function set($varname, $value)

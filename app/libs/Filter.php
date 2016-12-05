@@ -8,10 +8,10 @@ class Filter
 
     public static function add($filtName, $callback)
     {
-        $mw = new FilterObj();
-        $mw->name = $filtName;
-        $mw->callback = $callback;
-        self::$filters[$filtName] = $mw;
+        $fil = new FilterObj();
+        $fil->name = $filtName;
+        $fil->callback = $callback;
+        self::$filters[$filtName] = $fil;
     }
 
     public static function filters()

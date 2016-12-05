@@ -87,12 +87,12 @@ class Request extends SymfonyRequest
         return false;
     }
 
-    public static function is($pattern)
+    public static function is($str)
     {
-        $pattern = ltrim($pattern, "/");
-        if (substr($pattern, -1) == "%" && substr(rtrim(self::getPath(), "/"), 0, strlen($pattern)) === $pattern) {
+        $str = ltrim($str, "/");
+        if (substr($str, -1) == "%" && substr(rtrim(self::getPath(), "/"), 0, strlen($str)) === $str) {
             return true;
-        } elseif ($pattern == ltrim(self::getPath(), "/")) {
+        } elseif ($str == ltrim(self::getPath(), "/")) {
             return true;
         }
         return false;
