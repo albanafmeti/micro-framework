@@ -2,9 +2,9 @@ Usage of frameworks like [_Laravel_](https://laravel.com/), [_Symfony_](https://
 
 ![Micro Framework](wallpaper.jpg)
 
-##Introduction
+## Introduction
 
-####Why would you like to create your own framework?
+#### Why would you like to create your own framework?
 
 
 If you look around, everybody will tell you that it's a bad thing to reinvent the wheel and that you'd better choose an existing framework and forget about creating your own. But anyhow there are a few good reasons to start creating your own framework:
@@ -15,12 +15,12 @@ If you look around, everybody will tell you that it's a bad thing to reinvent th
 4. To get a good experience in PHP
 
 
-####MVC architecture
+#### MVC architecture
 
 The **Model-View-Controller** (MVC) is an architectural pattern that separates an application into three main logical components: the model, the view, and the controller. Each of these components are built to handle specific development aspects of an application. The **Model** component corresponds to all the data related logic that the user works with. The **View** component is used for all the UI logic of the application.  **Controllers** act as an interface between Model and View components to process all the business logic and incoming requests, manipulate data using the Model component and interact with the Views to render the final output. For more on MVC design pattern read this article at SitePoint: [The MVC design pattern and PHP](https://www.sitepoint.com/the-mvc-pattern-and-php-1/). We are going to use MVC design pattern to build our framework.
 
 
-####Our Project
+#### Our Project
 
 Instead of creating everything in our framework from scratch, we are going to use some external packages. To install these we are going to use Composer, a project dependency manager used by modern PHP applications. If you don't have it yet, [download and install Composer now](https://getcomposer.org/).
 
@@ -77,4 +77,5 @@ The directory structure of our project is going to be like this:
 * _cache_ is the directory where will be compiled files from Blade templating engine which we are going to talk later for. The _logs_ folder may contain different log files.
 * The last directory _vendor_ doesn't have to do with us, because it's necessary for downloaded packages and libraries via [_Composer_](https://getcomposer.org/).
 
-Continues...
+
+[Continues](http://albanafmeti.com/2016/how-to-build-a-php-framework/)...
